@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valley Station</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div class="launcher-container" id="mainBg">
+        <div class="window-controls">
+            <div class="control-btn" onclick="window.close()">✕</div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="https://nexabag.xyz/assets/img/favicon.png" alt="" width="30px" height="30px">
+            </div>
+            <div class="nav-center">
+                <div class="nav-icons">
+                    <div class="nav-item active"
+                        onclick="changePage('classic', this, 'https://forum.nexabag.xyz/assets/img/update.png')">
+                        <img src="https://forum.nexabag.xyz/assets/img/nforum.png" width="30px" height="30px">
+                    </div>
+                </div>
+                <div class="nav-icons">
+                    <div class="nav-item"
+                        onclick="changePage('windows', this, 'https://images8.alphacoders.com/105/1058564.png')">
+                        <img src="https://forum.nexabag.xyz/assets/img/windows.png" width="30px">
+                    </div>
+                    <div class="nav-item"
+                        onclick="changePage('superwheel', this, 'https://github.com/SiberizmBey/SuperWheel/blob/main/SW.gif')">
+                        <img src="https://forum.nexabag.xyz/assets/img/windows.png" width="30px">
+                    </div>
+
+                </div>
+                <div class="nav-icons">
+                    <div class="nav-item"
+                        onclick="changePage('settings', this, 'https://images.alphacoders.com/439/439401.jpg')"><i
+                            class="fa-solid fa-gear"></i></div>
+                </div>
+            </div>
+            <div class="nav-item">❐</div>
+        </aside>
+
+        <div id="login-panel" class="login-overlay">
+            <div class="login-box modern-login">
+                <div class="login-logo">
+                    <img src="https://nexabag.xyz/assets/img/favicon.png" width="60" height="60" alt="Logo">
+                </div>
+                <h2 class="login-title">Valley Station</h2>
+                <p class="login-desc">Devam etmek için forum hesabınla giriş yap.</p>
+                <div class="login-input-group">
+                    <div class="input-icon">
+                        <i class="fa fa-user"></i>
+                        <input type="text" id="username-input" placeholder="Kullanıcı Adı" autocomplete="username">
+                    </div>
+                    <div class="input-icon">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="password-input" placeholder="Şifre" autocomplete="current-password">
+                    </div>
+                </div>
+                <button id="login-btn" class="modern-login-btn" onclick="loginToForum()">GİRİŞ YAP</button>
+                <div class="login-footer">Hesabın yok mu? <span class="register-link"
+                        onclick="/* Link verilebilir */">Kaydol</span></div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <header class="top-bar">
+                <div class="glass-box">IN-Dev</div>
+                <div class="glass-box" style="text-align: center;"> Valley Station
+                </div>
+                <div class="profile">
+                    <span id="user-display-name">Misafir</span>
+                    <img id="user-display-avatar"
+                        src="https://as2.ftcdn.net/jpg/08/19/66/31/1000_F_819663119_che4sZSrmQv8uQJOzuN9TVQFQNHJlfQ2.jpg"
+                        alt="Profil" style="width: 30px; height: 30px; border-radius: 50%;">
+                </div>
+            </header>
+
+            <section class="hero" id="page-content">
+                <div class="back" id="subTitle">● NexaVerse</div>
+                <h1 id="mainTitle">WEB</h1>
+                <p class="desc" id="mainDesc">Web tarayıcısına erişim sağlayın.</p>
+                <div class="btn-group" id="action-area">
+                    <button class="btn-play" onclick="openWebPage()">AÇ</button>
+                </div>
+                <div id="progress-container" style="display:none; width: 100%; margin-top: 20px;">
+                    <div id="progress-bar" style="width: 0%; height: 5px; background: #8b5cf6; transition: 0.3s;"></div>
+                    <span id="progress-text" style="font-size: 12px; color: #aaa;">%0</span>
+                </div>
+            </section>
+            <section class="settings-page" id="settings-page" style="display:none;">
+                <div class="settings-title"><i class="fa fa-cog"></i> Ayarlar</div>
+                <div class="settings-group">
+                    <label class="settings-label">
+                        <input type="checkbox" id="startup-checkbox">
+                        Başlangıçta otomatik çalıştır
+                    </label>
+                </div>
+                <div class="settings-group">
+                    <div class="settings-label">Tema</div>
+                    <div class="theme-options">
+                        <label><input type="radio" name="theme" value="dark"> Karanlık</label>
+                        <label><input type="radio" name="theme" value="light"> Aydınlık</label>
+                        <label><input type="radio" name="theme" value="system"> Sistem Teması</label>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <div class="glass-box">NexaBAG Labs ● © 2024 - 2026 </div>
+                <div class="glass-box" style="display: flex; gap: 20px;">
+                    <span>v26.1-beta.2</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            const savedSession = localStorage.getItem('session');
+            if (savedSession) {
+                const user = JSON.parse(savedSession);
+                console.log("Oturum bulundu:", user.username);
+                // Panel geçişlerini yap (Girişi atla)
+                document.getElementById('login-panel').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }
+            checkGameStatus('classic');
+        };
+    </script>
+
+    <script src="assets/js/renderer.js"></script>
+    <script src="assets/js/function.js"></script>
+    <script>
+        // Ayarlar sayfası geçişi
+        document.querySelectorAll('.nav-item').forEach(item => {
+            // Ayarlar simgesi (fa-gears class'ı ile tespit)
+            if (item.querySelector('.fa-gear')) {
+                item.addEventListener('click', () => {
+                    document.getElementById('page-content').style.display = 'none';
+                    document.getElementById('settings-page').style.display = 'block';
+                });
+            }
+            // Diğer menüler
+            if (item.textContent.includes('⠿') || item.textContent.includes('WEB') || item.textContent.includes('WINDOWS')) {
+                item.addEventListener('click', () => {
+                    document.getElementById('settings-page').style.display = 'none';
+                    document.getElementById('page-content').style.display = 'block';
+                });
+            }
+        });
+
+        // Tema yönetimi
+        function applyTheme(theme) {
+            document.body.classList.remove('light-theme');
+            if (theme === 'light') document.body.classList.add('light-theme');
+            if (theme === 'system') {
+                const mq = window.matchMedia('(prefers-color-scheme: dark)');
+                if (mq.matches) document.body.classList.remove('light-theme');
+                else document.body.classList.add('light-theme');
+            }
+        }
+        function saveTheme(theme) {
+            localStorage.setItem('theme', theme);
+            applyTheme(theme);
+        }
+        function loadTheme() {
+            let theme = localStorage.getItem('theme') || 'system';
+            document.querySelectorAll('input[name="theme"]').forEach(radio => {
+                radio.checked = (radio.value === theme);
+            });
+            applyTheme(theme);
+        }
+        document.querySelectorAll('input[name="theme"]').forEach(radio => {
+            radio.addEventListener('change', e => saveTheme(e.target.value));
+        });
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            if (localStorage.getItem('theme') === 'system') applyTheme('system');
+        });
+        loadTheme();
+
+        // Başlangıçta çalıştır (dummy, gerçek uygulamada Electron main process ile yapılmalı)
+        const startupCheckbox = document.getElementById('startup-checkbox');
+        startupCheckbox.checked = localStorage.getItem('startup') === 'true';
+        startupCheckbox.addEventListener('change', e => {
+            localStorage.setItem('startup', e.target.checked);
+            // Gerçek uygulamada burada Electron API ile ayarlanmalı
+        });
+    </script>
+
+</body>
+
+</html>
