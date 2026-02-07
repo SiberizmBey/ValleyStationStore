@@ -22,7 +22,7 @@
 
         <aside class="sidebar">
             <div class="logo">
-                <img src="https://nexabag.xyz/assets/img/favicon.png" alt="" width="30px" height="30px">
+                <img src="valleystation.ico" alt="" width="30px" height="30px">
             </div>
             <div class="nav-center">
                 <div class="nav-icons">
@@ -37,24 +37,25 @@
                         <img src="https://forum.nexabag.xyz/assets/img/windows.png" width="30px">
                     </div>
                     <div class="nav-item"
-                        onclick="changePage('superwheel', this, 'https://github.com/SiberizmBey/SuperWheel/blob/main/SW.gif')">
-                        <img src="https://forum.nexabag.xyz/assets/img/windows.png" width="30px">
+                        onclick="changePage('superwheel', this, 'https://github.com/SiberizmBey/ValleyStationStore/blob/main/assets/img/superwheel.jpg')">
+                        <img src="https://raw.githubusercontent.com/SiberizmBey/SuperWheel/refs/heads/main/icon.ico"
+                            width="30px">
                     </div>
-
-                </div>
-                <div class="nav-icons">
                     <div class="nav-item"
-                        onclick="changePage('settings', this, 'https://images.alphacoders.com/439/439401.jpg')"><i
-                            class="fa-solid fa-gear"></i></div>
+                        onclick="changePage('blink', this, 'https://github.com/SiberizmBey/ValleyStationStore/blob/main/assets/img/superwheel.jpg')">
+                        <img src="https://forum.nexabag.xyz/assets/img/blinklogo.ico" width="30px">
+                    </div>
                 </div>
             </div>
-            <div class="nav-item">❐</div>
+            <div class="nav-item"
+                onclick="changePage('settings', this, 'https://images.alphacoders.com/439/439401.jpg')"><i
+                    class="fa-solid fa-gear"></i></div>
         </aside>
 
         <div id="login-panel" class="login-overlay">
             <div class="login-box modern-login">
                 <div class="login-logo">
-                    <img src="https://nexabag.xyz/assets/img/favicon.png" width="60" height="60" alt="Logo">
+                    <img src="valleystation.ico" width="60" height="60" alt="Logo">
                 </div>
                 <h2 class="login-title">Valley Station</h2>
                 <p class="login-desc">Devam etmek için forum hesabınla giriş yap.</p>
@@ -69,8 +70,8 @@
                     </div>
                 </div>
                 <button id="login-btn" class="modern-login-btn" onclick="loginToForum()">GİRİŞ YAP</button>
-                <div class="login-footer">Hesabın yok mu? <span class="register-link"
-                        onclick="/* Link verilebilir */">Kaydol</span></div>
+                <!-- <div class="login-footer">Hesabın yok mu? <span class="register-link"
+                        onclick="https://forum.nexabag.xyz/login.php">Kaydol</span></div> -->
             </div>
         </div>
 
@@ -88,7 +89,7 @@
             </header>
 
             <section class="hero" id="page-content">
-                <div class="back" id="subTitle">● NexaVerse</div>
+                <div class="back" id="subTitle">● NexaBAG Studios</div>
                 <h1 id="mainTitle">WEB</h1>
                 <p class="desc" id="mainDesc">Web tarayıcısına erişim sağlayın.</p>
                 <div class="btn-group" id="action-area">
@@ -115,12 +116,20 @@
                         <label><input type="radio" name="theme" value="system"> Sistem Teması</label>
                     </div>
                 </div>
+
+                <div class="settings-group bottom">
+                    <div class="settings-label">Güncelleme</div>
+                    <button class="modern-login-btn" onclick="checkUpdates()" style="width: auto; padding: 10px 20px;">
+                        <i class="fa fa-sync"></i> Güncellemeleri Denetle
+                    </button>
+                    <p id="update-status" style="font-size: 12px; margin-top: 10px; color: #aaa;"></p>
+                </div>
             </section>
 
             <footer>
                 <div class="glass-box">NexaBAG Labs ● © 2024 - 2026 </div>
                 <div class="glass-box" style="display: flex; gap: 20px;">
-                    <span>v26.1-beta.2</span>
+                    <span id="app-version-footer"></span>
                 </div>
             </footer>
         </div>

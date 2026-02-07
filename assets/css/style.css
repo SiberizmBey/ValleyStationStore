@@ -244,43 +244,65 @@ body {
     animation: loginFadeIn 0.7s cubic-bezier(.4,0,.2,1);
 }
 .settings-title {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 800;
     color: #fff;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    border-bottom: 2px solid rgba(144, 29, 53, 0.6);
+    padding-bottom: 15px;
+    width: 100%;
 }
+
 .settings-group {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
-.settings-label {
-    color: #bdbdbd;
-    font-size: 1.05rem;
+
+.bottom{
+    margin-bottom: 20px;
+}
+
+/* Güncelleme Kartı Tasarımı */
+.update-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.update-status-text {
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+.update-status-text b {
+    color: #901d35; /* Yeni sürüm numarasını vurgula */
+}
+
+/* O iğrenç İNDİR butonunu adam eden stil */
+.btn-update {
+    background: #901d35;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s all;
     display: flex;
     align-items: center;
-    gap: 10px;
-    cursor: pointer;
+    gap: 8px;
+    text-transform: uppercase;
+    font-size: 12px;
 }
-.theme-options {
-    display: flex;
-    gap: 18px;
-    margin-top: 4px;
-}
-.theme-options label {
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.theme-options input[type="radio"] {
-    accent-color: #901d35;
+
+.btn-update:hover {
+    background: #b32442;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(144, 29, 53, 0.4);
 }
 
 /* ÜST BAR */

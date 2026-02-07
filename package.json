@@ -1,22 +1,43 @@
 {
   "name": "valleystation",
-  "version": "26.1-b2",
-  "description": "",
+  "productName": "ValleyStation",
+  "description": "Valley Station Store Launcher",
+  "version": "26.1.0",
   "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
   "dependencies": {
     "adm-zip": "^0.5.16",
     "axios": "^1.13.2",
-    "child_process": "^1.0.2",
-    "electron": "^39.2.7",
     "electron-auto-launch": "^5.0.7",
     "unrar-promise": "^3.1.0"
-  }
+  },
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^26.7.0"
+  },
+  "build": {
+    "appId": "com.nexabag.valleystation",
+    "productName": "ValleyStation",
+    "copyright": "Copyright © 2026",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "icon": "valleystation.ico",
+      "executableName": "ValleyStation",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  },
+  "license": "ISC"
 }

@@ -238,3 +238,70 @@ function applyUserSession(userData) {
     const loginPanel = document.getElementById('login-panel');
     if (loginPanel) loginPanel.style.display = 'none';
 }
+
+const CURRENT_VERSION = "26.1-beta.2";
+// BAŞINDAKİ HTTPS'YE VE DOSYA ADINA DİKKAT
+const GITHUB_RAW_JSON = "https://raw.githubusercontent.com/SiberizmBey/ValleyStationStore/main/version.json";
+
+async function checkUpdates() {
+    const statusArea = document.getElementById('update-status');
+    const GITHUB_RAW = "https://raw.githubusercontent.com/SiberizmBey/ValleyStationStore/main/verison.json";
+
+    try {
+        const response = await fetch(`${GITHUB_RAW}?t=${Date.now()}`);
+        const data = await response.json();
+
+        const serverVersion = data.version.trim();
+        const localVersion = CURRENT_VERSION.trim();
+
+        if (serverVersion !== localVersion) {
+            // Yeni sürüm varsa şık bir panel göster
+            statusArea.innerHTML = `
+                <div class="update-card">
+                    <div class="update-status-text">
+                        <i class="fa fa-info-circle"></i> Yeni sürüm mevcut: <b>${serverVersion}</b>
+                    </div>
+                    <button class="btn-update" onclick="window.open('${data.download_url}', '_blank')">
+                        <i class="fa fa-download"></i> GÜNCELLE
+                    </button>
+                </div>`;
+        } else {
+            // Güncelse sadece bilgi ver
+            statusArea.innerHTML = `
+                <div class="update-status-text" style="color: #666;">
+                    <i class="fa fa-check-circle"></i> Sistem güncel (v${localVersion})
+                </div>`;
+        }
+    } catch (e) {
+        statusArea.innerText = "Sunucuya bağlanılamadı.";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Sayfa açılır açılmaz kurulu olan sürümü footer'a yazdırır
+    const footerSpan = document.getElementById('app-version-footer');
+    if (footerSpan) {
+        footerSpan.innerText = "v" + CURRENT_VERSION;
+    }
+
+    // Güncelleme kontrolünü başlat (Arka planda GitHub'a bakar)
+    checkUpdates();
+});
+
+// HTML'deki checkbox'ı seçiyoruz
+const startupCheckbox = document.getElementById('startup-checkbox');
+
+// Sayfa yüklendiğinde hafızadaki ayarı kontrol et
+if (localStorage.getItem('startup') === 'true') {
+    startupCheckbox.checked = true;
+}
+
+// Tıklandığında hem hafızaya kaydet hem Electron'a bildir
+startupCheckbox.addEventListener('change', (e) => {
+    const isChecked = e.target.checked;
+    localStorage.setItem('startup', isChecked);
+
+    // Electron'un ipcRenderer modülünü kullanarak ana sürece mesaj gönder
+    const { ipcRenderer } = require('electron');
+    ipcRenderer.send('set-autolaunch', isChecked);
+});
